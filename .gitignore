@@ -6,12 +6,18 @@ lib-cov
 *.out
 *.pid
 *.gz
+/*.env
 
 pids
 logs
 results
 build
+
 .eslintrc.json
+npm-debug.log
+.DS_Store
+
 
 node_modules/
 .vscode/
+
