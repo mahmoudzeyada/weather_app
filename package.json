@@ -17,6 +17,7 @@
         "eslint-config-google": "^0.13.0"
     },
     "engines": {
-        "node": "10.15.2"
+        "node": "10.15.2",
+        "npm": "6.10.1"
     }
 }
