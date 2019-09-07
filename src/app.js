@@ -28,6 +28,7 @@ app.use(express.static(publicDirectoryPath));
 
 
 app.get('', (req, res) => {
+    console.log(res);
     res.render('index', {
         title: 'Weather',
         name: 'Mahmoud Zeyada',
@@ -44,9 +45,9 @@ app.get('/weather', (req, res) => {
     }
 
 
-    geocode(address, (error, {lat, long, location} = {}) => {
+    geocode(address, (error, { lat, long, location } = {}) => {
         if (error) {
-            return res.send({error});
+            return res.send({ error });
         }
         forecast(lat, long, location, (error, data) => {
             if (error) {

@@ -7,14 +7,14 @@ const geocode = (address, callback) => {
     request({
         url: url,
         json: true,
-    }, (error, response) => {
+    }, (error, {body}) => {
         if (error) callback('cannot connect to location', undefined);
-        else if (response.body.features.length === 0) {
+        else if (body.features.length === 0) {
             callback('the location is mistake try again', undefined);
         } else {
-            const lat = response.body.features[0].center[0];
-            const long = response.body.features[0].center[1];
-            const location = response.body.features[1].properties.address;
+            const lat = body.features[0].center[0];
+            const long = body.features[0].center[1];
+            const location = body.features[1].properties.address;
 
             callback(undefined, {
                 lat: lat,

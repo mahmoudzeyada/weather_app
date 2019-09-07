@@ -8,12 +8,14 @@ function forecast(lat, lang, location, callback) {
     request({
         url: url,
         json: true,
-    }, (error, response) => {
+    }, (error, {body}) => {
         if (error) {
             callback('error in connection', undefined);
+        } else if (body.error) {
+            callback('Unable to find location', undefined);
         } else {
             callback(undefined, {
-                forecast: response.body.currently.summary,
+                forecast: body.daily.data[0].summary,
                 location: location,
             });
         }
