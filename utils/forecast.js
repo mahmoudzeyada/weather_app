@@ -8,14 +8,23 @@ function forecast(lat, lang, location, callback) {
     request({
         url: url,
         json: true,
-    }, (error, {body}) => {
+    }, (error, { body }) => {
         if (error) {
             callback('error in connection', undefined);
         } else if (body.error) {
             callback('Unable to find location', undefined);
         } else {
+            const forecast = body.daily.data[0].summary + ' it is currently '
+                + body.currently.temperature
+                + ' degrees out. there is a '
+                + body.currently.precipProbability
+                + ' the temperature high is '
+                + body.daily.data[0].temperatureHigh
+                + ' the temperature low is '
+                + body.daily.data[0].temperatureLow;
+
             callback(undefined, {
-                forecast: body.daily.data[0].summary,
+                forecast: forecast,
                 location: location,
             });
         }

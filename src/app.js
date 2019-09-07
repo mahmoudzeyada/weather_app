@@ -28,7 +28,7 @@ app.use(express.static(publicDirectoryPath));
 
 
 app.get('', (req, res) => {
-    console.log(res);
+
     res.render('index', {
         title: 'Weather',
         name: 'Mahmoud Zeyada',
